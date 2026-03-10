@@ -1,9 +1,10 @@
+import Productsdetelsskeleton from '@/Components/Skeleton/Productsdetelsskeleton';
 import React from 'react';
 
 const loading = () => {
     return (
         <div>
-            loading..
+            <Productsdetelsskeleton/>
         </div>
     );
 };
