@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
           <Navbar />
         </header>
 
-        <main className="md:w-11/12 mx-auto">
+        <main className="md:w-11/12 mx-auto min-h-[calc(100vh-320px)]">
           {children}
         </main>
 

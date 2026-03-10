@@ -1,9 +1,17 @@
+import Banner from "@/Components/Home/Banner";
+import Products from "@/Components/Home/Products";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <button className="btn btn-primary">click now </button>
+    <div className="space-y-20">
+      <section>
+        <Banner/>
+      </section>
+
+      <section>
+        <Products/>
+      </section>
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import Logo from './Logo';
-import Navlink from '../Buttons/Navlink';
 import Link from 'next/link';
 import { LuShoppingCart } from 'react-icons/lu';
-
+import Navlink from '../Buttons/Navlink';
 
 
 
