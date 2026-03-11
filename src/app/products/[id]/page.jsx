@@ -2,6 +2,51 @@ import { singleproducts } from "@/action/server/products";
 import Image from "next/image";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 
+
+export async function generateMetadata({ params }) {
+  const { id } = params;
+  const product = await singleproducts(id);
+
+  return {
+    title: product?.title || "Product | Hero Kidz",
+    description: product?.description?.slice(0, 150) || "Hero Kidz Kids Product",
+
+    openGraph: {
+      title: product?.title || "Hero Kidz Product",
+      description: product?.description?.slice(0, 150) || "Hero Kidz Product",
+      url: `https://hero-kidz-i36h1sgye-mehedi67719s-projects.vercel.app/products/${id}`,
+      siteName: "Hero Kidz",
+      images: [
+        {
+          url: product?.image || "/hero-kidz-home.png",
+          alt: product?.title || "Hero Kidz Product",
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "website",
+      locale: "en_US",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: product?.title || "Hero Kidz Product",
+      description: product?.description?.slice(0, 150) || "Hero Kidz Product",
+      images: [product?.image || "/hero-kidz-home.png"],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
+    alternates: {
+      canonical: `/products/${id}`,
+    },
+  };
+}
+
+
 const Page = async ({ params }) => {
   const { id } = await params;
 
