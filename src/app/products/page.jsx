@@ -27,12 +27,17 @@ const page = async () => {
 
     const products = await allproducts()
 
+    const productsData = products.map(p => ({
+        ...p,
+        _id: p._id.toString()
+    }));
+
 
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10'>
 
             {
-                products.map(p => <Productscard key={p._id} product={p}></Productscard>)
+                productsData.map(p => <Productscard key={p._id} product={p}></Productscard>)
             }
 
         </div>

@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 
 export const metadata = {
-  metadataBase: new URL("https://hero-kidz-i36h1sgye-mehedi67719s-projects.vercel.app"),
+  metadataBase: new URL("https://hero-kidz-i36h1sgye-mehedi67719s-projects.vercel.app/"),
 
   title: {
     default: "Hero Kidz - Fun & Educational Toys for Kids",
@@ -67,7 +67,7 @@ export const metadata = {
     description:
       "Explore Hero Kidz for creative, safe and educational toys designed for kids.",
 
-    url: "https://hero-kidz-i36h1sgye-mehedi67719s-projects.vercel.app",
+    url: "https://hero-kidz-i36h1sgye-mehedi67719s-projects.vercel.app/",
 
     siteName: "Hero Kidz",
 
