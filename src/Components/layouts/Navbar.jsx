@@ -3,6 +3,7 @@ import Logo from './Logo';
 import Link from 'next/link';
 import { LuShoppingCart } from 'react-icons/lu';
 import Navlink from '../Buttons/Navlink';
+import Authbutton from '../Buttons/Authbutton';
 
 
 
@@ -44,9 +45,11 @@ const Navbar = () => {
                 <Link href={'/cart'} className='btn btn-primary'>
                 <LuShoppingCart />
                 </Link>
-                <Link href={"/login"}>
+
+                <Authbutton></Authbutton>
+                {/* <Link href={"/login"}>
                 <button className='btn btn-primary btn-outline'>Login</button>
-                </Link>
+                </Link> */}
             </div>
         </div>
      </div>

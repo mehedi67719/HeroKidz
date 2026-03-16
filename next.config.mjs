@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
- reactCompiler: true,
- images: {
-   remotePatterns: [
+  images: {
+    remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'i.ibb.co.com',
+        protocol: "https",
+        hostname: "i.ibb.co",
       },
       {
-        protocol: 'https',
-        hostname: 'via.placeholder.com',
+        protocol: "https",
+        hostname: "via.placeholder.com",
       },
     ],
   },

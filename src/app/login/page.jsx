@@ -1,5 +1,6 @@
 "use client";
 
+import { signIn } from 'next-auth/react';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -19,7 +20,9 @@ const Page = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+    // console.log('Form Data:', formData);
+    signIn('credentials', {redirect: false, email:formData.email, password:formData.password })
+
   };
 
   return (
