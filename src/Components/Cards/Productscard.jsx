@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaStar, FaShoppingCart, FaHeart } from "react-icons/fa";
+import AddtoCart from "../Buttons/AddtoCart";
 
 const ProductCard = ({ product }) => {
   const { title, bangla, image, price, discount, ratings, sold, _id } = product || {};
@@ -47,10 +48,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="flex gap-2 mt-2">
-          <button className="flex-1 flex items-center justify-center gap-2 bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition">
-            <FaShoppingCart />
-            Add to Cart
-          </button>
+      <AddtoCart></AddtoCart>
 
           <Link
             href={`/products/${_id}`}

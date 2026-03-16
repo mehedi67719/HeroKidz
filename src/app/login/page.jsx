@@ -1,10 +1,13 @@
 "use client";
 
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import Swal from 'sweetalert2';
 
 const Page = () => {
+  const router=useRouter()
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -18,11 +21,32 @@ const Page = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('Form Data:', formData);
-    signIn('credentials', {redirect: false, email:formData.email, password:formData.password })
 
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: formData.email,
+      password: formData.password
+    });
+
+    // console.log(result);
+
+    if (result.ok) {
+      Swal.fire({
+        title: "Login successful",
+        icon: "success",
+        draggable: true
+      });
+      router.push("/")
+    } else {
+      Swal.fire({
+        title: "Login failed",
+        text: result.error || "Check your credentials",
+        icon: "error",
+        draggable: true
+      });
+    }
   };
 
   return (

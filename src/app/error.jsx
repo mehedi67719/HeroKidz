@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 import { MdErrorOutline } from "react-icons/md";
 
@@ -29,12 +30,11 @@ const Error = ({ error, reset }) => {
           Try Again
         </button>
 
-        <a
-          href="/"
+        <Link  href={"/"}
           className="px-6 py-3 bg-gray-700 text-white rounded-lg shadow hover:bg-gray-800 transition"
         >
           Go Home
-        </a>
+        </Link>
       </div>
 
     </div>
