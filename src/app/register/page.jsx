@@ -1,12 +1,13 @@
 "use client";
 
 import { postUser } from '@/action/server/auth';
+import SocialButton from '@/Components/Buttons/SocialButton';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 const Page = () => {
-  const router=useRouter();
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,13 +22,13 @@ const Page = () => {
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log('Registration Form Data:', formData);
-    const result=await postUser(formData)
+    const result = await postUser(formData)
 
 
-    if(result.acknowledged){
+    if (result.acknowledged) {
       alert("register successfull please login")
       router.push("/login")
     }
@@ -88,10 +89,7 @@ const Page = () => {
           <span>or</span>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-3 btn btn-primary py-3 rounded-xl shadow hover:scale-105 transition">
-          <FcGoogle size={24} />
-          Continue with Google
-        </button>
+        <SocialButton />
 
         <p className="text-center text-gray-500">
           Already have an account? <a href="/login" className="text-primary font-semibold">Login</a>

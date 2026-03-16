@@ -1,5 +1,6 @@
 "use client";
 
+import SocialButton from '@/Components/Buttons/SocialButton';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -7,7 +8,7 @@ import { FcGoogle } from 'react-icons/fc';
 import Swal from 'sweetalert2';
 
 const Page = () => {
-  const router=useRouter()
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -89,10 +90,7 @@ const Page = () => {
           <span>or</span>
         </div>
 
-        <button className="w-full flex items-center justify-center gap-3 btn btn-primary py-3 rounded-xl shadow hover:scale-105 transition">
-          <FcGoogle size={24} />
-          Continue with Google
-        </button>
+        <SocialButton />
 
         <p className="text-center text-gray-500">
           Don't have an account? <a href="/register" className="text-primary font-semibold">Sign up</a>

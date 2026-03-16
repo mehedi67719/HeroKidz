@@ -1,5 +1,6 @@
 import { loginUser } from "@/action/server/auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 
 
 export const authOptions = {
@@ -8,17 +9,24 @@ export const authOptions = {
         CredentialsProvider({
             // The name to display on the sign in form (e.g. 'Sign in with...')
             name: 'Credentials',
-          
+
             credentials: {
                 // username: { label: "Username", type: "text", placeholder: "jsmith" },
                 // password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
 
-                const user=await loginUser(credentials)
+                const user = await loginUser(credentials)
 
                 return user;
             }
+        })
+,
+
+
+          GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
 
     ],
