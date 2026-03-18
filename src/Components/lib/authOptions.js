@@ -5,7 +5,6 @@ import { dbconnection } from "./dbconnection";
 
 
 export const authOptions = {
-    // Configure one or more authentication providers
     providers: [
         CredentialsProvider({
             // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -46,26 +45,44 @@ export const authOptions = {
 
 
             const newuser = {
-                provider:account.provider,
-                name:user.name,
-                email:user.email,
+                provider: account.provider,
+                name: user.name,
+                email: user.email,
                 role: "user"
             }
 
 
-            const result=await usercollection.insertOne(newuser);
+            const result = await usercollection.insertOne(newuser);
             return result.acknowledged
 
-          
+
         },
         // async redirect({ url, baseUrl }) {
         //     return baseUrl
         // },
-        // async session({ session, token, user }) {
-        //     return session
-        // },
-        // async jwt({ token, user, account, profile, isNewUser }) {
-        //     return token
-        // }
+        async session({ session, token, user }) {
+            if (token) {
+                session.role = token.role;
+                session.email = token.email;
+            }
+            return session
+        },
+        async jwt({ token, user, account, profile, isNewUser }) {
+            if (user) {
+                if (account.provider == "google") {
+                    const usercollection = await dbconnection("user")
+
+                    const dbuseer = await usercollection.findOne({ email: user.email });
+                    token.role = dbuseer?.role;
+                    token.email = dbuseer?.email;
+                }
+                else {
+                    token.role = user?.role;
+                    token.email = user?.email;
+                }
+
+            }
+            return token
+        }
     }
 }
