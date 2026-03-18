@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="flex gap-2 mt-2">
-      <AddtoCart></AddtoCart>
+      <AddtoCart product={product}></AddtoCart>
 
           <Link
             href={`/products/${_id}`}

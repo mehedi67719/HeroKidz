@@ -1,19 +1,45 @@
 "use client";
 
+import { handlecart } from "@/action/server/cart";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import Swal from "sweetalert2"; 
 
-const AddtoCart = () => {
+const AddtoCart = ({ product }) => {
   const { status } = useSession();
   const router = useRouter();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (status === "authenticated") {
-      alert("Item added to cart!"); // এখানে তোমার cart logic বসাও
+      try {
+        const result = await handlecart({ product, inc: true });
+
+        if (result.success) {
+          Swal.fire({
+            icon: "success",
+            title: "Added to cart!",
+            text: "Your product has been added to the cart.",
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Failed!",
+            text: result.message || "Something went wrong.",
+          });
+        }
+      } catch (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: err.message || "Something went wrong.",
+        });
+      }
     } else {
-      router.push("/login"); // login না থাকলে redirect
+      router.push("/login");
     }
   };
 
