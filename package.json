@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "daisyui": "^5.5.19",
     "mongodb": "^7.1.0",
     "next": "^16.1.6",
     "next-auth": "^4.24.13",
@@ -21,6 +20,7 @@
     "@tailwindcss/postcss": "^4.2.1",
     "autoprefixer": "^10.4.27",
     "babel-plugin-react-compiler": "1.0.0",
+    "daisyui": "^5.5.19",
     "postcss": "^8.5.8",
     "tailwindcss": "^4.2.2"
   },
